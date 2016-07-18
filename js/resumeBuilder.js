@@ -22,6 +22,17 @@ var bio = {
     "art", "sewing", "music", "teaching"],
 };
 
+var work = {};
+work.position = "music program coordinator volunteer";
+work.employer = "Foothill Elementary PTA";
+work.yearsWorked = "2";
+work.cityOfBusiness = "Orem, UT";
+
+var education = {};
+education.name = "Brigham Young University";
+education.yearsAttended = "1994-1999";
+education.schoolsCity = "Provo, UT";
+
 $("#main").append("Hello! I am " + bio.name + ", " + bio.role + ".");
 $("#main").append(" " + bio.welcomeMessage + "<br>");
 
@@ -33,4 +44,5 @@ for (var i=0; i<bio.skills.length; i++) {
   $("#main").append(bio.skills[i] + "<br>");
 }
 
+$("#main").append(work["position"] + " " + education.name + "<br>");
 $("#main").append(bio.contactInfo.email + " " + bio.contactInfo.cell);
