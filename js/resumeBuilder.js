@@ -1,95 +1,136 @@
-var name = "Heather Nuffer";
-var role = "Web Developer";
+//var name = "Heather Nuffer";
+//var role = "Web Developer";
 
-var formattedName = HTMLheaderName.replace("%data%", name);
-var formattedRole = HTMLheaderRole.replace("%data%", role);
+//var formattedName = HTMLheaderName.replace("%data%", name);
+//var formattedRole = HTMLheaderRole.replace("%data%", role);
 
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
+//$("#header").prepend(formattedRole);
+//$("#header").prepend(formattedName);
 
 var bio = {
   "name": "Heather Nuffer",
   "role": "Web Developer",
-  "contactInfo": {
-    "email": "zzzuzz@gmail.com",
-    "cell": "801-919-6515",
-    "twitter": "@ethyl2",
-    "gitHub": "ethyl2"
-  },
-  "pictureURL": 'images/Heather.jpg',
   "welcomeMessage": "Welcome to my site!",
+  "bioPic": "images/Heather.jpg",
+  "contacts": {
+    "email": "zzzuzz@gmail.com",
+    "mobile": "801-919-6515",
+    "twitter": "@ethyl22000",
+    "gitHub": "ethyl2",
+    "location": "Lindon, UT"
+  },
   "skills": ["HTML", "CSS", "JavaScript", "Python", "R", "technical writing",
-    "art", "sewing", "music", "teaching"],
-};
+    "art", "music", "teaching"]
+}
 
-var work = {};
-work.position = "music program coordinator volunteer";
-work.employer = "Foothill Elementary PTA";
-work.yearsWorked = "2";
-work.cityOfBusiness = "Orem, UT";
-
-var education1 = {};
-education1.name = "Brigham Young University";
-education1.yearsAttended = "1994-1999";
-education1.schoolsCity = "Provo, UT";
-
-var education = {
-  "schools" : [
-    {"name": "Brigham Young University",
-      "city": "Provo, UT",
-      "major": "Microbiology",
-      "minor": "Chemistry",
-      "graduationYear": "1999"
+var work = {
+  "jobs": [
+    {"title": "medical microbiology lab assistant",
+      "dates": "2000-2005",
+      "location": "Pleasant Grove, UT",
+      "description": "Set up and analyze cell cultures and tests",
+      "employer": "Richards Laboratories, Inc."
     },
-    {"name": "Stanford University",
-      "city": "Stanford, CA",
-      "courseraCertificate": "Child Nutrition and Cooking 2.0",
-      "year": "2013"
-    },
-    {"name": "The Pennsylvania State University",
-      "city": "State College, PA",
-      "courseraCertificate": "Introduction to Art: Concepts & Techniques",
-      "year": "2013"
-    },
-    {"name": "The Hong Kong University of Science and Technology",
-      "city": "Clear Water Bay, Hong Kong",
-      "courseraCertificate" : "The Science of Gastronomy",
-      "year": "2013"
-    },
-    {"name": "University of Toronto",
-      "city": "Toronto, Ontario",
-      "courseraCertificate": "Learn to Program: The Fundamentals",
-      "year": "2014"
-    },
-    {"name": "Rice University",
-      "city": "Houston, TX",
-      "courseraCertificate" :["An Introduction to Interactive Programming in Python",
-        "Principles of Computing"],
-      "year": "2014"
-    },
-    {"name": "John Hopkins University",
-      "city": "Baltimore, MD",
-      "courseraCertificate" : ["The Data Scientist's Toolbox", "R Programming",
-        "Getting and Cleaning Data", "Exploratory Data Analysis", "Reproducible Research"],
-      "year": "2015"
-    },
-    {"name": "Udacity",
-      "nanodegree": "Front-End Web Development",
-      "year": "2016"
+    {"title": "music program coordinator volunteer",
+      "dates": "2014-present",
+      "location": "Orem, UT",
+      "description": "Provide support and leadership for the choir, orchestra and ballroom groups",
+      "employer": "Foothill Elementary PTA"
     }
   ]
 }
 
-$("#main").append("Hello! I am " + bio.name + ", " + bio.role + ".");
-$("#main").append(" " + bio.welcomeMessage + "<br>");
-
-$("#main").append("<img src=images/Heather.jpg alt='Heather Nuffer picture' style='float: right' width=200>");
-
-$("#main").append("My skills include: <br>");
-
-for (var i=0; i<bio.skills.length; i++) {
-  $("#main").append(bio.skills[i] + "<br>");
+var projects = {
+  "projects": [
+    {"title": "animal trading card",
+      "dates": "2016",
+      "description": "Uses HTML and CSS to format a trading card, according to project specifications",
+      "url": "https://github.com/ethyl2/trading_card",
+      "images": ["https://github.com/ethyl2/trading_card/blob/master/Yeast_Live.jpg"]
+    },
+    {"title": "art portfolio",
+      "dates": "2016",
+      "description": "Uses HTML, CSS, and Bootstrap to create a page featuring my artwork",
+      "url": "https://github.com/ethyl2/art_portfolio",
+      "images": ["https://github.com/ethyl2/art_portfolio/blob/master/images/seasons-tree-400.jpg",
+                  "https://github.com/ethyl2/art_portfolio/blob/master/images/heart2-400.jpeg"]
+    },
+    {"title": "Submission for Summer of Coding Contest: Click-n-Learn",
+      "dates": "2015",
+      "description": "Uses JavaScript to create a grid of musical symbols. Clicking on them reveals their meanings.",
+      "url": "https://www.khanacademy.org/computer-programming/many-merry-musical-symbols/4645067420729344",
+      "images": ["https://drive.google.com/file/d/0BwaJuWSYZi5zNlpnMF9zM2Fid1E/view?usp=sharing"]
+    },
+    {"title": "Winning Submission for Summer of Coding Contest: Card Deck",
+      "dates": "2015",
+      "description": "Uses JavaScript to create a card game called When I Go Out West...",
+      "url": "https://www.khanacademy.org/computer-programming/when-i-go-out-west/5883452214870016",
+      "images": ["https://drive.google.com/file/d/0BwaJuWSYZi5zT2pRZmhoYW1XVUE/view?usp=sharing"]
+    }
+  ]
 }
 
-$("#main").append(work["position"] + " " + education1.name + "<br>");
-$("#main").append(bio.contactInfo.email + " " + bio.contactInfo.cell);
+var education = {
+  "schools" : [
+    {"name": "Brigham Young University",
+      "location": "Provo, UT",
+      "majors": ["Microbiology"],
+      "degree dates": "1999"
+    }
+  ],
+    "online courses": [
+    {"school": "Stanford University/Coursera",
+      "title": "Child Nutrition and Cooking 2.0",
+      "dates": "2013",
+      "url": "https://www.coursera.org/learn/childnutrition"
+    },
+    {"school": "The Pennsylvania State University/Coursera",
+      "title": "Introduction to Art: Concepts & Techniques",
+      "dates": "2013",
+      "url": "https://www.coursera.org/"
+    },
+    {"school": "The Hong Kong University of Science and Technology/Coursera",
+      "title" : "The Science of Gastronomy",
+      "dates": "2013",
+      "url": "https://www.coursera.org/learn/gastronomy"
+    },
+    {"school": "University of Toronto/Coursera",
+      "title": "Learn to Program: The Fundamentals",
+      "dates": "2014",
+      "url": "https://www.coursera.org/learn/learn-to-program"
+    },
+    {"school": "Rice University/Coursera",
+      "title" :["An Introduction to Interactive Programming in Python",
+        "Principles of Computing"],
+      "dates": "2014",
+      "url": ["https://www.coursera.org/learn/interactive-python-1",
+              "https://www.coursera.org/specializations/computer-fundamentals"]
+    },
+    {"school": "John Hopkins University/Coursera",
+      "city": "Baltimore, MD",
+      "title" : ["The Data Scientist's Toolbox", "R Programming",
+        "Getting and Cleaning Data", "Exploratory Data Analysis", "Reproducible Research"],
+      "dates": "2015",
+      "url": "https://www.coursera.org/specializations/jhu-data-science"
+    },
+    {"school": "Udacity",
+      "title": "Front-End Web Development Nanodegree",
+      "dates": "2016",
+      "url" : "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
+    }
+  ]
+}
+
+//$("#main").append("Hello! I am " + bio.name + ", " + bio.role + ".");
+//$("#main").append(" " + bio.welcomeMessage + "<br>");
+
+//$("#main").append("<img src=images/Heather.jpg alt='Heather Nuffer picture' style='float: right' width=200>");
+
+//$("#main").append("My skills include: <br>");
+
+//for (var i=0; i<bio.skills.length; i++) {
+//  $("#main").append(bio.skills[i] + "<br>");
+//}
+
+//$("#main").append(work["position"] + " " + education1.name + "<br>");
+//$("#main").append(bio.contactInfo.email + " " + bio.contactInfo.cell);
