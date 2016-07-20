@@ -31,7 +31,7 @@ var work = {
       "description": "Set up and analyze cell cultures and tests",
       "employer": "Richards Laboratories, Inc."
     },
-    {"title": "music program coordinator volunteer",
+    {"title": "volunteer music program coordinator",
       "dates": "2014-present",
       "location": "Orem, UT",
       "description": "Provide support and leadership for the choir, orchestra and ballroom groups",
@@ -144,5 +144,13 @@ if (bio["skills"].length > 0) {
     var formattedSkill = HTMLskills.replace("%data%", bio["skills"][i]);
     $("#skills").append(formattedSkill);
   }
-  //$("#skills").append(HTMLskills.replace("%data%", bio["skills"]));
+}
+
+for (var job in work["jobs"]) {
+  if (work["jobs"].hasOwnProperty(job)) {
+    $("#workExperience").append(HTMLworkStart);
+    var formattedEmployer = HTMLworkEmployer.replace("%data%", work["jobs"][job]["employer"]);
+    var formattedJobTitle = HTMLworkTitle.replace("%data%", work["jobs"][job]["title"]);
+    $(".work-entry:last").append(formattedEmployer + formattedJobTitle);
+  }
 }
