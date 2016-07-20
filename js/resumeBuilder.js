@@ -146,15 +146,36 @@ if (bio["skills"].length > 0) {
   }
 }
 
-for (var job in work["jobs"]) {
-  if (work["jobs"].hasOwnProperty(job)) {
-    $("#workExperience").append(HTMLworkStart);
-    var formattedEmployer = HTMLworkEmployer.replace("%data%", work["jobs"][job]["employer"]);
-    var formattedJobTitle = HTMLworkTitle.replace("%data%", work["jobs"][job]["title"]);
-    var formattedDates = HTMLworkDates.replace("%data%", work["jobs"][job]["dates"]);
-    var formattedDescription = HTMLworkDescription.replace("%data%", work["jobs"][job]["description"]);
-    $(".work-entry:last").append(formattedEmployer + formattedJobTitle);
-    $(".work-entry:last").append(formattedDates);
-    $(".work-entry:last").append(formattedDescription);
+var displayWork = function(){
+  for (var job in work["jobs"]) {
+    if (work["jobs"].hasOwnProperty(job)) {
+      $("#workExperience").append(HTMLworkStart);
+      var formattedEmployer = HTMLworkEmployer.replace("%data%", work["jobs"][job]["employer"]);
+      var formattedJobTitle = HTMLworkTitle.replace("%data%", work["jobs"][job]["title"]);
+      var formattedDates = HTMLworkDates.replace("%data%", work["jobs"][job]["dates"]);
+      var formattedDescription = HTMLworkDescription.replace("%data%", work["jobs"][job]["description"]);
+      $(".work-entry:last").append(formattedEmployer + formattedJobTitle);
+      $(".work-entry:last").append(formattedDates);
+      $(".work-entry:last").append(formattedDescription);
+    }
   }
+}
+
+displayWork();
+
+$("#main").append(internationalizeButton);
+
+function inName() {
+  var nameArray = bio["name"].trim().split(" ");
+  nameArray[0] = nameArray[0][0].toUpperCase() + nameArray[0].substring(1).toLowerCase();
+  nameArray[1] = nameArray[1].toUpperCase();
+  return (nameArray[0] + " " + nameArray[1]);
+}
+
+function locationizer(work_obj) {
+    var locationArray = [];
+    for (var i = 0; i < work_obj["jobs"].length; i++) {
+        locationArray.push(work_obj["jobs"][i]["location"]);
+    }
+    return locationArray;
 }
