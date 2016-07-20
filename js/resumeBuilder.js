@@ -75,7 +75,7 @@ var education = {
     {"name": "Brigham Young University",
       "location": "Provo, UT",
       "majors": ["Microbiology"],
-      "degree dates": "1999"
+      "degree dates": ["1999"]
     }
   ],
     "online courses": [
@@ -134,3 +134,15 @@ var education = {
 
 //$("#main").append(work["position"] + " " + education1.name + "<br>");
 //$("#main").append(bio.contactInfo.email + " " + bio.contactInfo.cell);
+
+HTMLheaderName = HTMLheaderName.replace("%data%", bio["name"]);
+$("#header").append(HTMLheaderName);
+
+if (bio["skills"].length > 0) {
+  $("#header").append(HTMLskillsStart);
+  for (var i=0; i < bio["skills"].length; i++) {
+    var formattedSkill = HTMLskills.replace("%data%", bio["skills"][i]);
+    $("#skills").append(formattedSkill);
+  }
+  //$("#skills").append(HTMLskills.replace("%data%", bio["skills"]));
+}
