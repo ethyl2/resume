@@ -17,7 +17,8 @@ var bio = {
     "mobile": "801-919-6515",
     "twitter": "@ethyl22000",
     "gitHub": "ethyl2",
-    "location": "Lindon, UT"
+    "location": ["Lindon, UT", "Westland, MI", "Alexandria, VA", "Alma, MI",
+                  "Woodbridge, VA", "Reston, VA", "Arlington, VA", "Annandale, VA"]
   },
   "skills": ["HTML", "CSS", "JavaScript", "Python", "R", "technical writing",
     "art", "music", "teaching"]
@@ -89,9 +90,7 @@ projects.display = function() {
     $("#projects:last").append(formattedDescription);
 
     for (var j=0; j < projects["projects"][i]["images"].length; j++) {
-      console.log(projects["projects"][i]["images"][j]);
       var formattedImage = HTMLprojectImage.replace("%data%", projects["projects"][i]["images"][j]);
-      console.log(HTMLprojectImage.replace("%data%", projects["projects"][i]["images"][j]));
       $("#projects:last").append(formattedImage);
     }
   }
@@ -207,3 +206,5 @@ function locationizer(work_obj) {
     }
     return locationArray;
 }
+
+$("#mapDiv").append(googleMap);
