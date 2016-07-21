@@ -24,6 +24,29 @@ var bio = {
     "art", "music", "teaching"]
 }
 
+bio.display = function() {
+  HTMLheaderName = HTMLheaderName.replace("%data%", bio["name"]);
+  $("#header").append(HTMLheaderName);
+  var formattedRole = HTMLheaderRole.replace("%data%", bio["role"]);
+  $("#header").append(formattedRole);
+
+  var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio["welcomeMessage"]);
+  $("#header").append(formattedWelcome);
+
+  var formattedBioPic = HTMLbioPic.replace("%data%", bio["bioPic"]);
+  $("#header").append(formattedBioPic);
+
+  if (bio["skills"].length > 0) {
+    $("#header").append(HTMLskillsStart);
+    for (var i=0; i < bio["skills"].length; i++) {
+      var formattedSkill = HTMLskills.replace("%data%", bio["skills"][i]);
+      $("#skills").append(formattedSkill);
+    }
+  }
+}
+
+bio.display();
+
 var work = {
   "jobs": [
     {"title": "medical microbiology lab assistant",
@@ -161,17 +184,6 @@ var education = {
 
 //$("#main").append(work["position"] + " " + education1.name + "<br>");
 //$("#main").append(bio.contactInfo.email + " " + bio.contactInfo.cell);
-
-HTMLheaderName = HTMLheaderName.replace("%data%", bio["name"]);
-$("#header").append(HTMLheaderName);
-
-if (bio["skills"].length > 0) {
-  $("#header").append(HTMLskillsStart);
-  for (var i=0; i < bio["skills"].length; i++) {
-    var formattedSkill = HTMLskills.replace("%data%", bio["skills"][i]);
-    $("#skills").append(formattedSkill);
-  }
-}
 
 var displayWork = function(){
   for (var job in work["jobs"]) {
