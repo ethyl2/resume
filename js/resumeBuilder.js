@@ -42,33 +42,61 @@ var work = {
 
 var projects = {
   "projects": [
-    {"title": "animal trading card",
+    {"title": "Animal Trading Card",
       "dates": "2016",
       "description": "Uses HTML and CSS to format a trading card, according to project specifications",
       "url": "https://github.com/ethyl2/trading_card",
-      "images": ["https://github.com/ethyl2/trading_card/blob/master/Yeast_Live.jpg"]
+      //"images": ["https://github.com/ethyl2/trading_card/blob/master/Yeast_Live.jpg"]
+      "images": ["images/yeastTradingCard.png"]
+      //"images": ["https://raw.githubusercontent.com/ethyl2/trading_card/master/Yeast_Live.jpg"]
     },
-    {"title": "art portfolio",
+    {"title": "Art Portfolio",
       "dates": "2016",
       "description": "Uses HTML, CSS, and Bootstrap to create a page featuring my artwork",
       "url": "https://github.com/ethyl2/art_portfolio",
-      "images": ["https://github.com/ethyl2/art_portfolio/blob/master/images/seasons-tree-400.jpg",
-                  "https://github.com/ethyl2/art_portfolio/blob/master/images/heart2-400.jpeg"]
+      //"images": ["https://github.com/ethyl2/art_portfolio/blob/master/images/seasons-tree-400.jpg",
+      //"https://github.com/ethyl2/art_portfolio/blob/master/images/heart2-400.jpeg"]
+      "images": ["images/artPortfolio.png"]
     },
     {"title": "Submission for Summer of Coding Contest: Click-n-Learn",
       "dates": "2015",
       "description": "Uses JavaScript to create a grid of musical symbols. Clicking on them reveals their meanings.",
       "url": "https://www.khanacademy.org/computer-programming/many-merry-musical-symbols/4645067420729344",
-      "images": ["https://drive.google.com/file/d/0BwaJuWSYZi5zNlpnMF9zM2Fid1E/view?usp=sharing"]
+      //"images": ["https://drive.google.com/file/d/0BwaJuWSYZi5zNlpnMF9zM2Fid1E/view?usp=sharing"]
+      "images": ["images/musicalSymbolsProject.png"]
     },
     {"title": "Winning Submission for Summer of Coding Contest: Card Deck",
       "dates": "2015",
       "description": "Uses JavaScript to create a card game called When I Go Out West...",
       "url": "https://www.khanacademy.org/computer-programming/when-i-go-out-west/5883452214870016",
-      "images": ["https://drive.google.com/file/d/0BwaJuWSYZi5zT2pRZmhoYW1XVUE/view?usp=sharing"]
+      //"images": ["https://drive.google.com/file/d/0BwaJuWSYZi5zT2pRZmhoYW1XVUE/view?usp=sharing"]
+      "images": ["images/cardGameWest.png"]
     }
-  ]
+  ],
 }
+
+projects.display = function() {
+  for (var i=0; i < projects["projects"].length; i++) {
+    $("#projects:last").append(HTMLprojectStart);
+    var formattedTitle = HTMLprojectTitle.replace("%data%", projects["projects"][i]["title"]);
+    formattedTitle = formattedTitle.replace("#", projects["projects"][i]["url"]);
+    $("#projects:last").append(formattedTitle);
+
+    var formattedDates = HTMLprojectDates.replace("%data%", projects["projects"][i]["dates"]);
+    $("#projects:last").append(formattedDates);
+
+    var formattedDescription = HTMLprojectDescription.replace("%data%", projects["projects"][i]["description"]);
+    $("#projects:last").append(formattedDescription);
+
+    for (var j=0; j < projects["projects"][i]["images"].length; j++) {
+      console.log(projects["projects"][i]["images"][j]);
+      var formattedImage = HTMLprojectImage.replace("%data%", projects["projects"][i]["images"][j]);
+      console.log(HTMLprojectImage.replace("%data%", projects["projects"][i]["images"][j]));
+      $("#projects:last").append(formattedImage);
+    }
+  }
+}
+projects.display();
 
 var education = {
   "schools" : [
