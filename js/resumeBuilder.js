@@ -1,12 +1,3 @@
-//var name = "Heather Nuffer";
-//var role = "Web Developer";
-
-//var formattedName = HTMLheaderName.replace("%data%", name);
-//var formattedRole = HTMLheaderRole.replace("%data%", role);
-
-//$("#header").prepend(formattedRole);
-//$("#header").prepend(formattedName);
-
 var bio = {
   "name": "Heather Nuffer",
   "role": "Web Developer",
@@ -64,36 +55,47 @@ var work = {
   ]
 }
 
+work.displayWork = function(){
+  for (var job in work["jobs"]) {
+    if (work["jobs"].hasOwnProperty(job)) {
+      $("#workExperience").append(HTMLworkStart);
+      var formattedEmployer = HTMLworkEmployer.replace("%data%", work["jobs"][job]["employer"]);
+      var formattedJobTitle = HTMLworkTitle.replace("%data%", work["jobs"][job]["title"]);
+      var formattedDates = HTMLworkDates.replace("%data%", work["jobs"][job]["dates"]);
+      var formattedDescription = HTMLworkDescription.replace("%data%", work["jobs"][job]["description"]);
+      $(".work-entry:last").append(formattedEmployer + formattedJobTitle);
+      $(".work-entry:last").append(formattedDates);
+      $(".work-entry:last").append(formattedDescription);
+    }
+  }
+}
+
+work.displayWork();
+
 var projects = {
   "projects": [
     {"title": "Animal Trading Card",
       "dates": "2016",
       "description": "Uses HTML and CSS to format a trading card, according to project specifications",
       "url": "https://github.com/ethyl2/trading_card",
-      //"images": ["https://github.com/ethyl2/trading_card/blob/master/Yeast_Live.jpg"]
       "images": ["images/yeastTradingCard.png"]
-      //"images": ["https://raw.githubusercontent.com/ethyl2/trading_card/master/Yeast_Live.jpg"]
     },
     {"title": "Art Portfolio",
       "dates": "2016",
       "description": "Uses HTML, CSS, and Bootstrap to create a page featuring my artwork",
       "url": "https://github.com/ethyl2/art_portfolio",
-      //"images": ["https://github.com/ethyl2/art_portfolio/blob/master/images/seasons-tree-400.jpg",
-      //"https://github.com/ethyl2/art_portfolio/blob/master/images/heart2-400.jpeg"]
       "images": ["images/artPortfolio.png"]
     },
     {"title": "Submission for Summer of Coding Contest: Click-n-Learn",
       "dates": "2015",
       "description": "Uses JavaScript to create a grid of musical symbols. Clicking on them reveals their meanings.",
       "url": "https://www.khanacademy.org/computer-programming/many-merry-musical-symbols/4645067420729344",
-      //"images": ["https://drive.google.com/file/d/0BwaJuWSYZi5zNlpnMF9zM2Fid1E/view?usp=sharing"]
       "images": ["images/musicalSymbolsProject.png"]
     },
     {"title": "Winning Submission for Summer of Coding Contest: Card Deck",
       "dates": "2015",
       "description": "Uses JavaScript to create a card game called When I Go Out West...",
       "url": "https://www.khanacademy.org/computer-programming/when-i-go-out-west/5883452214870016",
-      //"images": ["https://drive.google.com/file/d/0BwaJuWSYZi5zT2pRZmhoYW1XVUE/view?usp=sharing"]
       "images": ["images/cardGameWest.png"]
     }
   ],
@@ -125,7 +127,9 @@ var education = {
     {"name": "Brigham Young University",
       "location": "Provo, UT",
       "majors": ["Microbiology"],
-      "degree dates": ["1999"]
+      "degree": ["Bachelor of Science"],
+      "degree dates": ["1999"],
+      "url": ["https://home.byu.edu/home/"]
     }
   ],
     "online courses": [
@@ -171,36 +175,30 @@ var education = {
   ]
 }
 
-//$("#main").append("Hello! I am " + bio.name + ", " + bio.role + ".");
-//$("#main").append(" " + bio.welcomeMessage + "<br>");
+education.display = function() {
+  $("#education").append(HTMLschoolStart);
 
-//$("#main").append("<img src=images/Heather.jpg alt='Heather Nuffer picture' style='float: right' width=200>");
+  var formattedSchoolName = HTMLschoolName.replace("%data%", education["schools"][0]["name"]);
+  formattedSchoolName = formattedSchoolName.replace("#", education["schools"][0]["url"]);
+  $("#education").append(formattedSchoolName);
+  var formattedMajor = HTMLschoolDegree.replace("%data%", education["schools"][0]["majors"]);
+  $("#education").append(formattedMajor);
+  var formattedDegree = HTMLschoolDegree.replace("%data%", education["schools"][0]["degree"]);
+  $("#education").append(formattedDegree);
+  var formattedDates = HTMLschoolDegree.replace("%data%", education["schools"][0]["degree dates"]);
+  $("#education").append(formattedDates);
 
-//$("#main").append("My skills include: <br>");
-
-//for (var i=0; i<bio.skills.length; i++) {
-//  $("#main").append(bio.skills[i] + "<br>");
-//}
-
-//$("#main").append(work["position"] + " " + education1.name + "<br>");
-//$("#main").append(bio.contactInfo.email + " " + bio.contactInfo.cell);
-
-var displayWork = function(){
-  for (var job in work["jobs"]) {
-    if (work["jobs"].hasOwnProperty(job)) {
-      $("#workExperience").append(HTMLworkStart);
-      var formattedEmployer = HTMLworkEmployer.replace("%data%", work["jobs"][job]["employer"]);
-      var formattedJobTitle = HTMLworkTitle.replace("%data%", work["jobs"][job]["title"]);
-      var formattedDates = HTMLworkDates.replace("%data%", work["jobs"][job]["dates"]);
-      var formattedDescription = HTMLworkDescription.replace("%data%", work["jobs"][job]["description"]);
-      $(".work-entry:last").append(formattedEmployer + formattedJobTitle);
-      $(".work-entry:last").append(formattedDates);
-      $(".work-entry:last").append(formattedDescription);
+  $("#education").append(HTMLonlineClasses);
+  for (var i=0; i<education["online courses"].length; i++) {
+    var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education["online courses"][i]["title"]);
+    formattedOnlineTitle = formattedOnlineTitle.replace("#", education["online courses"][i]["url"]);
+    var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education["online courses"][i]["school"]);
+    var formattedOnlineDates = HTMLonlineSchool.replace("%data%", education["online courses"][i]["dates"]);
+    $("#education:last").append(formattedOnlineTitle, formattedOnlineSchool, formattedOnlineDates);
     }
-  }
 }
 
-displayWork();
+education.display();
 
 $("#main").append(internationalizeButton);
 
