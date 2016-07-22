@@ -53,13 +53,15 @@ var work = {
       "dates": "2000-2005",
       "location": "Pleasant Grove, UT",
       "description": "Set up and analyze cell cultures and tests",
-      "employer": "Richards Laboratories, Inc."
+      "employer": "Richards Laboratories, Inc.",
+      "url": "http://richardslabs.infogenix.com/"
     },
     {"title": "volunteer music program coordinator",
       "dates": "2014-present",
       "location": "Orem, UT",
       "description": "Provide support and leadership for the choir, orchestra and ballroom groups",
-      "employer": "Foothill Elementary PTA"
+      "employer": "Foothill Elementary PTA",
+      "url": "http://www.foothillpta.org/"
     }
   ]
 }
@@ -69,6 +71,7 @@ work.displayWork = function(){
     if (work["jobs"].hasOwnProperty(job)) {
       $("#workExperience").append(HTMLworkStart);
       var formattedEmployer = HTMLworkEmployer.replace("%data%", work["jobs"][job]["employer"]);
+      formattedEmployer = formattedEmployer.replace("#", work["jobs"][job]["url"]);
       var formattedJobTitle = HTMLworkTitle.replace("%data%", work["jobs"][job]["title"]);
       var formattedDates = HTMLworkDates.replace("%data%", work["jobs"][job]["dates"]);
       var formattedDescription = HTMLworkDescription.replace("%data%", work["jobs"][job]["description"]);
