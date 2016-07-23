@@ -169,6 +169,10 @@ span {
   text-align: center;
 }
 
+#lets-connect a {color: white;
+display:inline;
+}
+
 /* Media queries to handle various device widths */
 
 @media only screen and (max-width: 1024px) {
