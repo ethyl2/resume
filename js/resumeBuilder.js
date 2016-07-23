@@ -37,9 +37,12 @@ bio.display = function() {
 
   var formattedLocation = HTMLlocation.replace("%data%", bio["contacts"]["location"][0]);
   var formattedEmail = HTMLemail.replace("%data%", bio["contacts"]["email"]);
+  formattedEmail = formattedEmail.replace("#", "mailto:" + bio["contacts"]["email"]);
   var formattedMobile = HTMLmobile.replace("%data%", bio["contacts"]["mobile"]);
   var formattedGitHub = HTMLgithub.replace("%data%", bio["contacts"]["gitHub"]);
+  formattedGitHub = formattedGitHub.replace("#", "https://github.com/" + bio["contacts"]["gitHub"]);
   var formattedTwitter = HTMLtwitter.replace("%data%", bio["contacts"]["twitter"]);
+  formattedTwitter = formattedTwitter.replace("#", "https:twitter.com/" + bio["contacts"]["twitter"].substring(1));
   $("#footerContacts").append(formattedLocation, formattedEmail, formattedMobile,
     formattedGitHub, formattedTwitter);
 
