@@ -89,11 +89,11 @@ work.displayWork();
 
 var projects = {
   "projects": [
-    {"title": "Animal Trading Card",
-      "dates": "2016",
-      "description": "Uses HTML and CSS to format a trading card, according to project specifications",
-      "url": "https://github.com/ethyl2/trading_card",
-      "images": ["images/yeastTradingCard.png"]
+    {"title": "Winning Submission for Summer of Coding Contest: Card Deck",
+      "dates": "2015",
+      "description": "Uses JavaScript to create a card game called When I Go Out West...",
+      "url": "https://www.khanacademy.org/computer-programming/when-i-go-out-west/5883452214870016",
+      "images": ["images/cardGameWest.png"]
     },
     {"title": "Art Portfolio",
       "dates": "2016",
@@ -107,11 +107,11 @@ var projects = {
       "url": "https://www.khanacademy.org/computer-programming/many-merry-musical-symbols/4645067420729344",
       "images": ["images/musicalSymbolsProject.png"]
     },
-    {"title": "Winning Submission for Summer of Coding Contest: Card Deck",
-      "dates": "2015",
-      "description": "Uses JavaScript to create a card game called When I Go Out West...",
-      "url": "https://www.khanacademy.org/computer-programming/when-i-go-out-west/5883452214870016",
-      "images": ["images/cardGameWest.png"]
+    {"title": "Animal Trading Card",
+      "dates": "2016",
+      "description": "Uses HTML and CSS to format a trading card, according to project specifications",
+      "url": "https://github.com/ethyl2/trading_card",
+      "images": ["images/yeastTradingCard.png"]
     }
   ],
 }
