@@ -206,11 +206,11 @@ education.display = function() {
 
   $("#education").append(HTMLonlineClasses);
   $("#education").append(HTMLschoolStart);
-  for (var i=0; i<education.onlineCourses.length; i++) {
-    var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title);
-    formattedOnlineTitle = formattedOnlineTitle.replace("#", education.onlineCourses[i].url);
-    var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
-    var formattedOnlineDates = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].dates);
+  for (var j = 0; j < education.onlineCourses.length; j++) {
+    var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[j].title);
+    formattedOnlineTitle = formattedOnlineTitle.replace("#", education.onlineCourses[j].url);
+    var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[j].school);
+    var formattedOnlineDates = HTMLonlineSchool.replace("%data%", education.onlineCourses[j].dates);
     $(".education-entry:last").append(formattedOnlineTitle, formattedOnlineSchool, formattedOnlineDates);
     }
 };
@@ -224,7 +224,7 @@ function inName() {
   nameArray[0] = nameArray[0][0].toUpperCase() + nameArray[0].substring(1).toLowerCase();
   nameArray[1] = nameArray[1].toUpperCase();
   return (nameArray[0] + " " + nameArray[1]);
-};
+}
 
 function locationizer(work_obj) {
     var locationArray = [];
@@ -232,6 +232,6 @@ function locationizer(work_obj) {
         locationArray.push(work_obj.jobs[i].location);
     }
     return locationArray;
-};
+}
 
 $("#mapDiv").append(googleMap);
