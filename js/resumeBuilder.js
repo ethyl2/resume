@@ -1,30 +1,28 @@
 var bio = {
   "name": "Heather Nuffer",
   "role": "Web Developer",
-  "welcomeMessage": "Welcome to my site!",
-  "bioPic": "images/Heather.jpg",
   "contacts": {
     "email": "zzzuzz@gmail.com",
     "mobile": "801-919-6515",
     "twitter": "@ethyl22000",
-    "gitHub": "ethyl2",
-    "location": ["Lindon, UT", "Westland, MI", "Alexandria, VA", "Alma, MI",
-                  "Woodbridge, VA", "Reston, VA", "Arlington, VA", "Annandale, VA"]
+    "github": "ethyl2",
+    "location": "Lindon, UT",
+    "allLocations" : ["Lindon, UT", "Westland, MI", "Alexandria, VA", "Alma, MI",
+                  "Woodbridge, VA", "Reston, VA", "Arlington, VA", "Annandale, VA"],
   },
+  "welcomeMessage": "Welcome to my site!",
   "skills": ["HTML", "CSS", "JavaScript", "Python", "R", "technical writing",
-    "art", "music", "teaching"]
+    "art", "music", "teaching"],
+  "biopic": "images/Heather.jpg"
 };
 
 bio.display = function() {
-  HTMLheaderName = HTMLheaderName.replace("%data%", bio.name);
-  $("#header").append(HTMLheaderName);
+  var formattedHeaderName = HTMLheaderName.replace("%data%", bio.name);
   var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-  $("#header").append(formattedRole);
-
+  $("#header").prepend(formattedHeaderName, formattedRole);
   var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
   $("#header").append(formattedWelcome);
-
-  var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
+  var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
   $("#header").append(formattedBioPic);
 
   if (bio.skills.length > 0) {
@@ -35,15 +33,15 @@ bio.display = function() {
     }
   }
 
-  var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location[0]);
+  var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
   var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
   formattedEmail = formattedEmail.replace("#", "mailto:" + bio.contacts.email);
   var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-  var formattedGitHub = HTMLgithub.replace("%data%", bio.contacts.gitHub);
+  var formattedGitHub = HTMLgithub.replace("%data%", bio.contacts.github);
   formattedGitHub = formattedGitHub.replace("#", "https://github.com/" + bio.contacts.gitHub);
   var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
   formattedTwitter = formattedTwitter.replace("#", "https:twitter.com/" + bio.contacts.twitter.substring(1));
-  $("#footerContacts").append(formattedLocation, formattedEmail, formattedMobile,
+  $("#footerContacts, #topContacts").append(formattedLocation, formattedEmail, formattedMobile,
     formattedGitHub, formattedTwitter);
 
 };
@@ -69,7 +67,7 @@ var work = {
   ]
 };
 
-work.displayWork = function(){
+work.display = function(){
   for (var i=0; i<work.jobs.length; i++) {
     if (work.jobs.hasOwnProperty(i)) {
       $("#workExperience").append(HTMLworkStart);
@@ -85,7 +83,7 @@ work.displayWork = function(){
   }
 };
 
-work.displayWork();
+work.display();
 
 var projects = {
   "projects": [
@@ -142,9 +140,9 @@ var education = {
     {"name": "Brigham Young University",
       "location": "Provo, UT",
       "majors": ["Microbiology"],
-      "degree": ["Bachelor of Science"],
-      "dates": ["1999"],
-      "url": ["https://home.byu.edu/home/"]
+      "degree": "Bachelor of Science",
+      "dates": "1999",
+      "url": "https://home.byu.edu/home/"
     }
   ],
     "onlineCourses": [
