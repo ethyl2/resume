@@ -104,8 +104,8 @@ function initializeMap() {
     var locations = [];
 
     // adds the single location property from bio to the locations array
-    for (var i = 0; i<bio.contacts.location.length; i++) {
-      locations.push(bio.contacts.location[i]);
+    for (var i = 0; i<bio.contacts.allLocations.length; i++) {
+      locations.push(bio.contacts.allLocations[i]);
   }
 
     // iterates through school locations and appends each location to
