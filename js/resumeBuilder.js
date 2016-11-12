@@ -38,11 +38,13 @@ var model = {
 
   projects: {
     "projects": [
-      {"title": "Winning Submission for Summer of Coding Contest: Card Deck",
-        "dates": "2015",
-        "description": "Uses JavaScript to create a card game called When I Go Out West...",
-        "url": "https://www.khanacademy.org/computer-programming/when-i-go-out-west/5883452214870016",
-        "images": ["images/cardGameWest.png"]
+      {"title": "The Pocket-Size Pest Quest",
+        "dates": "2016",
+        "description": "I created a Frogger-style game for the Udacity course on HTML5 canvas and \
+        JavaScript object-oriented programming. I customized the game with features that include \
+        an instructional modal, scoring and collectibles.",
+        "url": "https://ethyl2.github.io/pest_quest/",
+        "images": ["images/arcade_img.jpg"]
       },
       {"title": "Art Portfolio",
         "dates": "2016",
@@ -50,17 +52,21 @@ var model = {
         "url": "https://github.com/ethyl2/art_portfolio",
         "images": ["images/artPortfolio.png"]
       },
-      {"title": "Submission for Summer of Coding Contest: Click-n-Learn",
-        "dates": "2015",
-        "description": "Uses JavaScript to create a grid of musical symbols. Clicking on them reveals their meanings.",
-        "url": "https://www.khanacademy.org/computer-programming/many-merry-musical-symbols/4645067420729344",
-        "images": ["images/musicalSymbolsProject.png"]
-      },
-      {"title": "Animal Trading Card",
+      {"title": "Beanbag Chickens Tutorial",
         "dates": "2016",
-        "description": "Uses HTML and CSS to format a trading card, according to project specifications",
-        "url": "https://github.com/ethyl2/trading_card",
-        "images": ["images/yeastTradingCard.png"]
+        "description": "I designed and implemented \
+        a photo-rich tutorial on how to sew chicken beanbags. I wrote detailed \
+        text so that a beginning sewer can successfully make this project. \
+        I utilized Bootstrap for a responsive design.",
+        "url": "https://ethyl2.github.io/chickens-tutorial/",
+        "images": ["images/chickens-tut.jpg"]
+      },
+      {"title": "Pentatonic Music Explorer",
+        "dates": "2016",
+        "description": "This site explores pentatonic scales and music with buttons. \
+          It also generates songs with lyrics.",
+        "url": "https://ethyl2.github.io/music-generator/",
+        "images": ["images/musicPage.png"]
       }
     ],
   },
