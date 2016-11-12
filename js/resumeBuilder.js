@@ -48,7 +48,7 @@ var model = {
       },
       {"title": "Art Portfolio",
         "dates": "2016",
-        "description": "Uses HTML, CSS, and Bootstrap to create a page featuring my artwork",
+        "description": "Uses HTML, CSS, and Bootstrap to create a page featuring my artwork.",
         "url": "https://github.com/ethyl2/art_portfolio",
         "images": ["images/artPortfolio.png"]
       },
@@ -59,7 +59,7 @@ var model = {
         text so that a beginning sewer can successfully make this project. \
         I utilized Bootstrap for a responsive design.",
         "url": "https://ethyl2.github.io/chickens-tutorial/",
-        "images": ["images/chickens-tut.jpg"]
+        "images": ["images/chickens_tut.jpg"]
       },
       {"title": "Pentatonic Music Explorer",
         "dates": "2016",
@@ -82,11 +82,7 @@ var model = {
       }
     ],
       "onlineCourses": [
-      {"school": "Stanford University/Coursera",
-        "title": "Child Nutrition and Cooking 2.0",
-        "dates": "2013",
-        "url": "https://www.coursera.org/learn/childnutrition"
-      },
+
       {"school": "The Pennsylvania State University/Coursera",
         "title": "Introduction to Art: Concepts & Techniques",
         "dates": "2013",
@@ -153,6 +149,21 @@ var controller = {
         }
     }
     return [formattedEmployers, formattedJobTitles, formattedDatesArray, formattedDescriptions];
+  },
+  formattedProjects: function() {
+    var formattedTitles = [];
+    var formattedProjectDates = [];
+    var formattedDescriptions = [];
+    var formattedImages = [];
+    for (var i=0; i < model.projects.projects.length; i++) {
+      formattedTitles[i] = HTMLprojectTitle.replace("%data%", model.projects.projects[i].title).replace("#", model.projects.projects[i].url);
+      formattedProjectDates[i] = HTMLprojectDates.replace("%data%", model.projects.projects[i].dates);
+      formattedDescriptions[i] = HTMLprojectDescription.replace("%data%", model.projects.projects[i].description);
+      for (var j=0; j < model.projects.projects[i].images.length; j++) {
+        formattedImages[i] = HTMLprojectImage.replace("%data%", model.projects.projects[i].images[j]);
+      }
+    }
+    return [formattedTitles, formattedProjectDates, formattedDescriptions, formattedImages];
   }
 };
 
@@ -176,9 +187,16 @@ var view = {
         $(".work-entry:last").append(controller.formattedWork()[2][i]);
         //$(".work-entry:last").append(formattedDescription);
         $(".work-entry:last").append(controller.formattedWork()[3][i]);
-      }
+    }
+    for (var i = 0; i < controller.formattedProjects()[0].length; i++) {
+      $("#projects:last").append(HTMLprojectStart);
+      $(".project-entry:last").append(controller.formattedProjects()[0][i]);
+      $(".project-entry:last").append(controller.formattedProjects()[1][i]);
+      $(".project-entry:last").append(controller.formattedProjects()[2][i]);
+      $(".project-entry:last").append(controller.formattedProjects()[3][i]);
+    }
   }
-}
+};
 
 view.render();
 /* Old code:
