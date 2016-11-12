@@ -1,3 +1,181 @@
+var model = {
+  bio: {
+    "name": "Heather Nuffer",
+    "role": "Web Developer",
+    "contacts": {
+      "email": "zzzuzz@gmail.com",
+      "mobile": "801-919-6515",
+      "twitter": "@ethyl22000",
+      "github": "ethyl2",
+      "location": "Lindon, UT",
+      "allLocations" : ["Lindon, UT", "Westland, MI", "Alexandria, VA", "Alma, MI",
+                    "Woodbridge, VA", "Reston, VA", "Arlington, VA", "Annandale, VA"],
+    },
+    "welcomeMessage": "Welcome to my site!",
+    "skills": ["HTML", "CSS", "JavaScript", "Python", "R", "technical writing",
+      "art", "music", "teaching"],
+    "biopic": "images/Heather.jpg"
+  },
+
+  work: {
+    "jobs": [
+      {"title": "medical microbiology lab assistant",
+        "dates": "2000-2005",
+        "location": "Pleasant Grove, UT",
+        "description": "Set up and analyze cell cultures and tests",
+        "employer": "Richards Laboratories, Inc.",
+        "url": "http://richardslabs.infogenix.com/"
+      },
+      {"title": "volunteer music program coordinator",
+        "dates": "2014-present",
+        "location": "Orem, UT",
+        "description": "Provide support and leadership for the choir, orchestra and ballroom groups",
+        "employer": "Foothill Elementary PTA",
+        "url": "http://www.foothillpta.org/"
+      }
+    ]
+  },
+
+  projects: {
+    "projects": [
+      {"title": "Winning Submission for Summer of Coding Contest: Card Deck",
+        "dates": "2015",
+        "description": "Uses JavaScript to create a card game called When I Go Out West...",
+        "url": "https://www.khanacademy.org/computer-programming/when-i-go-out-west/5883452214870016",
+        "images": ["images/cardGameWest.png"]
+      },
+      {"title": "Art Portfolio",
+        "dates": "2016",
+        "description": "Uses HTML, CSS, and Bootstrap to create a page featuring my artwork",
+        "url": "https://github.com/ethyl2/art_portfolio",
+        "images": ["images/artPortfolio.png"]
+      },
+      {"title": "Submission for Summer of Coding Contest: Click-n-Learn",
+        "dates": "2015",
+        "description": "Uses JavaScript to create a grid of musical symbols. Clicking on them reveals their meanings.",
+        "url": "https://www.khanacademy.org/computer-programming/many-merry-musical-symbols/4645067420729344",
+        "images": ["images/musicalSymbolsProject.png"]
+      },
+      {"title": "Animal Trading Card",
+        "dates": "2016",
+        "description": "Uses HTML and CSS to format a trading card, according to project specifications",
+        "url": "https://github.com/ethyl2/trading_card",
+        "images": ["images/yeastTradingCard.png"]
+      }
+    ],
+  },
+
+  education: {
+    "schools" : [
+      {"name": "Brigham Young University",
+        "location": "Provo, UT",
+        "majors": ["Microbiology"],
+        "degree": "Bachelor of Science",
+        "dates": "1999",
+        "url": "https://home.byu.edu/home/"
+      }
+    ],
+      "onlineCourses": [
+      {"school": "Stanford University/Coursera",
+        "title": "Child Nutrition and Cooking 2.0",
+        "dates": "2013",
+        "url": "https://www.coursera.org/learn/childnutrition"
+      },
+      {"school": "The Pennsylvania State University/Coursera",
+        "title": "Introduction to Art: Concepts & Techniques",
+        "dates": "2013",
+        "url": "https://www.coursera.org/"
+      },
+
+      {"school": "University of Toronto/Coursera",
+        "title": "Learn to Program: The Fundamentals",
+        "dates": "2014",
+        "url": "https://www.coursera.org/learn/learn-to-program"
+      },
+      {"school": "Rice University/Coursera",
+        "title" :["An Introduction to Interactive Programming in Python",
+          "Principles of Computing"],
+        "dates": "2014",
+        "url": ["https://www.coursera.org/learn/interactive-python-1",
+                "https://www.coursera.org/specializations/computer-fundamentals"]
+      },
+      {"school": "John Hopkins University/Coursera",
+        "city": "Baltimore, MD",
+        "title" : ["The Data Scientist's Toolbox", "R Programming",
+          "Getting and Cleaning Data", "Exploratory Data Analysis", "Reproducible Research"],
+        "dates": "2015",
+        "url": "https://www.coursera.org/specializations/jhu-data-science"
+      },
+      {"school": "Udacity",
+        "title": "Front-End Web Development Nanodegree",
+        "dates": "2016",
+        "url" : "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
+      }
+    ]
+  }
+};
+
+var controller = {
+  formattedHeaderName: HTMLheaderName.replace("%data%", model.bio.name),
+  formattedRole: HTMLheaderRole.replace("%data%", model.bio.role),
+  formattedWelcome: HTMLwelcomeMsg.replace("%data%", model.bio.welcomeMessage),
+  formattedBioPic: HTMLbioPic.replace("%data%", model.bio.biopic),
+  formattedSkills: function() {
+    var skillsArray = [];
+    for (var i=0; i < model.bio.skills.length; i++) {
+      skillsArray[i] = HTMLskills.replace("%data%", model.bio.skills[i]);
+    }
+    return skillsArray;
+  },
+  formattedLocation: HTMLlocation.replace("%data%", model.bio.contacts.location),
+  formattedEmail: HTMLemail.replace("%data%", model.bio.contacts.email).replace("#", "mailto:" + model.bio.contacts.email),
+  formattedMobile: HTMLmobile.replace("%data%", model.bio.contacts.mobile),
+  formattedGitHub: HTMLgithub.replace("%data%", model.bio.contacts.github).replace("#", "https://github.com/" + model.bio.contacts.gitHub),
+  formattedTwitter: HTMLtwitter.replace("%data%", model.bio.contacts.twitter).replace("#", "https:twitter.com/" + model.bio.contacts.twitter.substring(1)),
+
+  formattedWork: function() {
+    var formattedEmployers = [];
+    var formattedJobTitles = [];
+    var formattedDatesArray = [];
+    var formattedDescriptions = [];
+    for (var i = 0; i < model.work.jobs.length; i++) {
+      if (model.work.jobs.hasOwnProperty(i)) {
+        formattedEmployers[i] = HTMLworkEmployer.replace("%data%", model.work.jobs[i].employer).replace("#", model.work.jobs[i].url);
+        formattedJobTitles[i] = HTMLworkTitle.replace("%data%", model.work.jobs[i].title);
+        formattedDatesArray[i] = HTMLworkDates.replace("%data%", model.work.jobs[i].dates);
+        formattedDescriptions[i] = HTMLworkDescription.replace("%data%", model.work.jobs[i].description);
+        }
+    }
+    return [formattedEmployers, formattedJobTitles, formattedDatesArray, formattedDescriptions];
+  }
+};
+
+var view = {
+  render: function() {
+    $("#header").prepend(controller.formattedHeaderName, controller.formattedRole);
+    $("#header").append(controller.formattedWelcome);
+    $("#header").append(controller.formattedBioPic);
+    $("#header").append(HTMLskillsStart);
+    for (var i = 0; i < controller.formattedSkills().length; i++) {
+      $("#skills").append(controller.formattedSkills()[i]);
+    };
+    $("#footerContacts, #topContacts").append(controller.formattedLocation, controller.formattedEmail, controller.formattedMobile,
+      controller.formattedGitHub, controller.formattedTwitter);
+
+    for (var i = 0; i < controller.formattedWork()[0].length; i++) {
+        $("#workExperience").append(HTMLworkStart);
+        //$(".work-entry:last").append(formattedEmployer + formattedJobTitle);
+        $(".work-entry:last").append(controller.formattedWork()[0][i] + controller.formattedWork()[1][i]);
+        //$(".work-entry:last").append(formattedDates);
+        $(".work-entry:last").append(controller.formattedWork()[2][i]);
+        //$(".work-entry:last").append(formattedDescription);
+        $(".work-entry:last").append(controller.formattedWork()[3][i]);
+      }
+  }
+}
+
+view.render();
+/* Old code:
 var bio = {
   "name": "Heather Nuffer",
   "role": "Web Developer",
@@ -232,4 +410,6 @@ function locationizer(work_obj) {
     return locationArray;
 }
 
+
 $("#mapDiv").append(googleMap);
+*/
